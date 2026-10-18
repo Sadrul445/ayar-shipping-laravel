@@ -11,28 +11,96 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body>
-<header data-header class="fixed inset-x-0 top-0 z-40 text-white transition-all duration-300">
-    <div class="wrap flex h-[76px] items-center justify-between gap-5">
-        <a href="{{ route('home') }}" class="flex items-center gap-3" aria-label="Ayar Shipping Services home">
-            <svg viewBox="0 0 40 40" class="h-10 w-10" aria-hidden="true"><circle cx="20" cy="20" r="19" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M9 24h22l-3 6H12z" fill="currentColor"/><path d="M15 24v-6h10v6M20 18v-4" stroke="currentColor" stroke-width="2" fill="none"/><path d="M8 33q3-2 6 0t6 0 6 0 6 0" stroke="#d9473c" stroke-width="2" fill="none"/></svg>
-            <span class="leading-tight"><b class="block text-[15px]">Ayar Shipping Services</b><small class="block text-[10px] tracking-[.18em] opacity-70">CREW RECRUITING</small></span>
+
+<header
+    data-header
+    class="site-header fixed inset-x-0 top-0 z-50 text-white"
+>
+    <div class="wrap flex h-[72px] items-center justify-between gap-4">
+        <!-- Logo -->
+        <a
+            href="{{ route('home') }}"
+            class="flex min-w-0 shrink-0 items-center gap-2.5"
+            aria-label="Ayar Shipping Services home"
+        >
+            <svg viewBox="0 0 40 40" class="h-9 w-9 shrink-0 sm:h-10 sm:w-10" aria-hidden="true">
+                <circle cx="20" cy="20" r="19" fill="none" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M9 24h22l-3 6H12z" fill="currentColor"/>
+                <path d="M15 24v-6h10v6M20 18v-4" stroke="currentColor" stroke-width="2" fill="none"/>
+                <path d="M8 33q3-2 6 0t6 0 6 0 6 0" stroke="#d9473c" stroke-width="2" fill="none"/>
+            </svg>
+
+            <span class="min-w-0 leading-tight">
+                <b class="block truncate text-xs font-extrabold sm:text-[15px]">
+                    Ayar Shipping Services
+                </b>
+                <small class="mt-1 block text-[9px] tracking-[.14em] opacity-75 sm:text-[10px] sm:tracking-[.18em]">
+                    CREW RECRUITING
+                </small>
+            </span>
         </a>
-        <nav class="hidden items-center gap-6 text-sm font-semibold lg:flex" aria-label="Main navigation">
-            <a class="hover:text-red-300" href="{{ route('home') }}">Home</a>
-            <a class="hover:text-red-300" href="{{ route('home') }}#about">About Us</a>
-            <a class="hover:text-red-300" href="{{ route('home') }}#services">Services</a>
-            <a class="hover:text-red-300" href="{{ route('vacancies.index') }}">Job Vacancies</a>
-            <a class="hover:text-red-300" href="{{ route('contact') }}">Contact Us</a>
-            <a class="btn btn-red !py-2.5" href="{{ route('applications.create') }}">Apply for Crew Job</a>
+
+        <!-- Desktop navigation -->
+        <nav
+            class="hidden items-center gap-5 text-sm font-semibold lg:flex"
+            aria-label="Main navigation"
+        >
+            <a class="nav-link" href="{{ route('home') }}">Home</a>
+            <a class="nav-link" href="{{ route('home') }}#about">About Us</a>
+            <a class="nav-link" href="{{ route('home') }}#services">Services</a>
+            <a class="nav-link" href="{{ route('vacancies.index') }}">Job Vacancies</a>
+            <a class="nav-link" href="{{ route('contact') }}">Contact Us</a>
+            <a class="btn btn-red !py-2.5" href="{{ route('applications.create') }}">
+                Apply for Crew Job
+            </a>
         </nav>
-        <button data-menu-toggle aria-expanded="false" aria-label="Toggle navigation" class="rounded-lg border border-white/30 px-3 py-2 lg:hidden">Menu</button>
+
+        <!-- Mobile menu button -->
+        <button
+            type="button"
+            data-menu-toggle
+            aria-controls="mobileNavigation"
+            aria-expanded="false"
+            aria-label="Open navigation menu"
+            class="mobile-menu-button inline-flex h-11 shrink-0 items-center justify-center gap-2 rounded-xl border border-white/30 px-3 text-sm font-semibold text-white lg:hidden"
+        >
+            <svg data-menu-icon-open viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-5 w-5" aria-hidden="true">
+                <path stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16"/>
+            </svg>
+            <svg data-menu-icon-close viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="hidden h-5 w-5" aria-hidden="true">
+                <path stroke-linecap="round" d="m6 6 12 12M18 6 6 18"/>
+            </svg>
+            {{-- <span data-menu-button-text>Menu</span> --}}
+        </button>
     </div>
-    <nav data-mobile-menu class="hidden border-t border-white/15 bg-[#001a3d] px-6 pb-5 pt-2 lg:hidden">
-        <a class="block py-3" href="{{ route('home') }}">Home</a><a class="block py-3" href="{{ route('home') }}#about">About Us</a>
-        <a class="block py-3" href="{{ route('home') }}#services">Services</a><a class="block py-3" href="{{ route('vacancies.index') }}">Job Vacancies</a>
-        <a class="block py-3" href="{{ route('contact') }}">Contact Us</a><a class="btn btn-red mt-2" href="{{ route('applications.create') }}">Apply for Crew Job</a>
+
+    <!-- Mobile navigation panel -->
+    <nav
+        id="mobileNavigation"
+        data-mobile-menu
+        class="mobile-navigation hidden lg:hidden"
+        aria-label="Mobile navigation"
+        aria-hidden="true"
+        inert
+    >
+        <div class="mx-auto max-w-7xl px-5 pb-5 pt-3 sm:px-6">
+            <a class="mobile-nav-link" href="{{ route('home') }}">Home</a>
+            <a class="mobile-nav-link" href="{{ route('home') }}#about">About Us</a>
+            <a class="mobile-nav-link" href="{{ route('home') }}#services">Services</a>
+            <a class="mobile-nav-link" href="{{ route('vacancies.index') }}">Job Vacancies</a>
+            <a class="mobile-nav-link" href="{{ route('contact') }}">Contact Us</a>
+
+            <a
+                class="mobile-apply-button"
+                href="{{ route('applications.create') }}"
+            >
+                Apply for Crew Job <span aria-hidden="true">→</span>
+            </a>
+        </div>
     </nav>
 </header>
+
+
 <main>@yield('content')</main>
 <footer class="bg-[#001a3d] py-12 text-white">
     <div class="wrap grid gap-8 md:grid-cols-3">
