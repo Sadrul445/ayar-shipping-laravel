@@ -1,67 +1,6 @@
 @extends('layouts.app')
 @section('title', 'Ayar Shipping Services – Crew Recruiting')
 @section('content')
-    {{-- <section
-        class="relative flex min-h-[720px] items-center overflow-hidden bg-[#001a3d] pb-16 pt-32 text-white md:min-h-[790px]">
-        <div class="absolute inset-0 opacity-25"
-            style="background:radial-gradient(ellipse at 80% 20%,#2d6a9d 0,transparent 42%),linear-gradient(130deg,#001a3d,#002a5c 65%,#00122d)">
-        </div>
-        <div class="wrap relative grid items-center gap-12 md:grid-cols-[1.15fr_.85fr]">
-            <div class="reveal">
-                <span
-                    class="inline-flex rounded-full border border-white/20 bg-white/5 px-4 py-2 text-xs font-bold uppercase tracking-[.2em] text-white/75">Maritime
-                    talent & services</span>
-                <h1 class="mt-7 max-w-3xl text-5xl leading-[1.02] sm:text-6xl lg:text-7xl">Connecting skilled seafarers with
-                    <span class="text-red-400">opportunity.</span>
-                </h1>
-                <p class="mt-6 max-w-xl text-lg leading-8 text-white/70">A crew recruitment experience designed to help
-                    seafarers explore opportunities and connect with the recruitment team.</p>
-                <div class="mt-8 flex flex-wrap gap-3"><a class="btn btn-red" href="{{ route('applications.create') }}">Apply
-                        for Crew Job <span aria-hidden="true">→</span></a><a class="btn btn-white"
-                        href="{{ route('vacancies.index') }}">Explore vacancies</a></div>
-                <div class="mt-12 grid max-w-xl grid-cols-3 gap-4 border-t border-white/20 pt-6 text-sm">
-                    <div><b class="block text-2xl">Crew</b><span class="text-white/60">Recruitment</span></div>
-                    <div><b class="block text-2xl">Marine</b><span class="text-white/60">Services</span></div>
-                    <div><b class="block text-2xl">Global</b><span class="text-white/60">Opportunities</span></div>
-                </div>
-            </div>
-            <div class="reveal relative">
-                <div class="absolute -inset-4 rounded-[2rem] border border-white/10"></div>
-                <div
-                    class="relative overflow-hidden rounded-[1.5rem] border border-white/20 bg-white/5 p-5 shadow-2xl backdrop-blur">
-                    <svg viewBox="0 0 520 390" class="w-full" role="img"
-                        aria-label="Illustration of a container ship at sea">
-                        <defs>
-                            <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
-                                <stop offset="0" stop-color="#1d5d91" />
-                                <stop offset="1" stop-color="#b5d6ec" />
-                            </linearGradient>
-                        </defs>
-                        <rect width="520" height="390" rx="18" fill="url(#sky)" />
-                        <circle cx="408" cy="74" r="30" fill="#fff" opacity=".65" />
-                        <path d="M0 265q55-18 110 0t110 0 110 0 110 0 110 0 110 0v125H0z" fill="#0b4976" />
-                        <path d="M48 225h420l-45 52H94z" fill="#071d39" />
-                        <path d="M92 277h326l-8 10H100z" fill="#b8332a" />
-                        @foreach ([['x' => 104, 'y' => 174, 'c' => '#c9473c'], ['x' => 151, 'y' => 174, 'c' => '#e8eef7'], ['x' => 198, 'y' => 174, 'c' => '#2f6fb5'], ['x' => 245, 'y' => 174, 'c' => '#c9473c'], ['x' => 292, 'y' => 174, 'c' => '#e8eef7'], ['x' => 151, 'y' => 132, 'c' => '#2f6fb5'], ['x' => 198, 'y' => 132, 'c' => '#c9473c'], ['x' => 245, 'y' => 132, 'c' => '#e8eef7']] as $box)
-                            <rect x="{{ $box['x'] }}" y="{{ $box['y'] }}" width="43" height="38"
-                                rx="2" fill="{{ $box['c'] }}" />
-                        @endforeach
-                        <rect x="352" y="135" width="54" height="90" fill="#f3f6fa" />
-                        <rect x="363" y="113" width="32" height="22" fill="#f3f6fa" />
-                        <path d="M358 153h42M358 166h42" stroke="#0b1f3d" stroke-width="4" />
-                        <path d="M0 315q28-10 56 0t56 0 56 0 56 0 56 0 56 0 56 0 56 0 56 0 56 0 56 0" stroke="#8bc9ee"
-                            stroke-width="3" fill="none" opacity=".6" />
-                    </svg>
-                    <div class="mt-4 flex items-center justify-between gap-4">
-                        <div>
-                            <p class="font-bold">Your next chapter at sea</p>
-                            <p class="mt-1 text-sm text-white/60">Explore roles and submit your profile</p>
-                        </div><span class="grid h-11 w-11 place-items-center rounded-full bg-[#b8332a] text-xl">↗</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section> --}}
 
     <section class="hero-video">
         <!-- Background video -->

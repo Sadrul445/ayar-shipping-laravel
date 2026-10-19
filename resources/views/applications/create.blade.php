@@ -1,17 +1,67 @@
 @extends('layouts.app')
 @section('title', 'Apply for Crew Job – Ayar Shipping Services')
 @section('content')
-<section class="bg-[#001a3d] pb-14 pt-36 text-white"><div class="wrap"><p class="text-sm font-bold uppercase tracking-[.18em] text-red-300">Crew recruitment</p><h1 class="mt-4 text-5xl">Crew job application</h1><p class="mt-4 max-w-2xl text-white/70">Complete your details and attach your CV to submit an application.</p></div></section>
-<section class="sec"><div class="wrap max-w-4xl">
-@if($errors->any())<div class="mb-6 rounded-xl border border-red-200 bg-red-50 p-5 text-sm text-red-800"><p class="font-bold">Please correct the following:</p><ul class="mt-2 list-inside list-disc">@foreach($errors->all() as $error)<li>{{ $error }}</li>@endforeach</ul></div>@endif
-<form method="POST" action="{{ route('applications.store') }}" enctype="multipart/form-data" class="crd space-y-6 p-6 md:p-9">@csrf
-<div class="grid gap-5 sm:grid-cols-2"><label class="text-sm font-semibold">Full name *<input class="field mt-2" name="full_name" value="{{ old('full_name') }}" required maxlength="120" autocomplete="name"></label><label class="text-sm font-semibold">Email address *<input class="field mt-2" type="email" name="email" value="{{ old('email') }}" required autocomplete="email"></label></div>
-<div class="grid gap-5 sm:grid-cols-2"><label class="text-sm font-semibold">Phone number *<input class="field mt-2" name="phone" value="{{ old('phone') }}" required maxlength="40" autocomplete="tel"></label><label class="text-sm font-semibold">Nationality<input class="field mt-2" name="nationality" value="{{ old('nationality') }}" maxlength="100"></label></div>
-<div class="grid gap-5 sm:grid-cols-2"><label class="text-sm font-semibold">Position applying for *<input class="field mt-2" name="position" value="{{ old('position', request('position')) }}" required maxlength="120" placeholder="e.g. Chief Officer"></label><label class="text-sm font-semibold">Select listed vacancy<select class="field mt-2" name="vacancy_id"><option value="">General application / not listed</option>@foreach($vacancies as $vacancy)<option value="{{ $vacancy->id }}" @selected(old('vacancy_id', request('vacancy')) == $vacancy->id)>{{ $vacancy->title }}</option>@endforeach</select></label></div>
-<label class="block text-sm font-semibold">Years of relevant experience<input class="field mt-2" type="number" min="0" max="60" name="experience_years" value="{{ old('experience_years') }}"></label>
-<div class="rounded-xl border border-dashed border-slate-300 bg-slate-50 p-5"><label class="block text-sm font-semibold">CV / Resume (PDF, max 5 MB) *<input class="field mt-2" type="file" name="cv" accept="application/pdf,.pdf" required></label><label class="mt-5 block text-sm font-semibold">Supporting certificates (PDF/JPG/PNG, max 5 MB each; up to 5 files)<input class="field mt-2" type="file" name="certificates[]" accept=".pdf,.jpg,.jpeg,.png" multiple></label><p class="mut mt-3 text-xs">Uploaded files are stored on the local private disk, not exposed as public links.</p></div>
-<label class="block text-sm font-semibold">Additional information<textarea class="field mt-2" name="message" rows="4" maxlength="3000">{{ old('message') }}</textarea></label>
-<label class="flex items-start gap-3 text-sm leading-6"><input class="mt-1 h-4 w-4" type="checkbox" name="consent" value="1" required @checked(old('consent'))><span>I confirm that the information I provided is accurate and consent to its use for recruitment review. *</span></label>
-<button class="btn btn-red" type="submit">Submit application →</button>
-</form></div></section>
+    <section class="bg-[#001a3d] pb-14 pt-36 text-white">
+        <div class="wrap">
+            <p class="text-sm font-bold uppercase tracking-[.18em] text-red-300">Crew recruitment</p>
+            <h1 class="mt-4 text-5xl">Crew job application</h1>
+            <p class="mt-4 max-w-2xl text-white/70">Complete your details and attach your CV to submit an application.</p>
+        </div>
+    </section>
+    <section class="sec">
+        <div class="wrap max-w-4xl">
+            @if ($errors->any())
+                <div class="mb-6 rounded-xl border border-red-200 bg-red-50 p-5 text-sm text-red-800">
+                    <p class="font-bold">Please correct the following:</p>
+                    <ul class="mt-2 list-inside list-disc">
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+            <form method="POST" action="{{ route('applications.store') }}" enctype="multipart/form-data"
+                class="crd space-y-6 p-6 md:p-9">@csrf
+                <div class="grid gap-5 sm:grid-cols-2"><label class="text-sm font-semibold">Full name *<input
+                            class="field mt-2" name="full_name" value="{{ old('full_name') }}" required maxlength="120"
+                            autocomplete="name"></label><label class="text-sm font-semibold">Email address *<input
+                            class="field mt-2" type="email" name="email" value="{{ old('email') }}" required
+                            autocomplete="email"></label></div>
+                <div class="grid gap-5 sm:grid-cols-2"><label class="text-sm font-semibold">Phone number *<input
+                            class="field mt-2" name="phone" value="{{ old('phone') }}" required maxlength="40"
+                            autocomplete="tel"></label><label class="text-sm font-semibold">Nationality<input
+                            class="field mt-2" name="nationality" value="{{ old('nationality') }}" maxlength="100"></label>
+                </div>
+                <div class="grid gap-5 sm:grid-cols-2"><label class="text-sm font-semibold">Position applying for *<input
+                            class="field mt-2" name="position" value="{{ old('position', request('position')) }}" required
+                            maxlength="120" placeholder="e.g. Chief Officer"></label><label
+                        class="text-sm font-semibold">Select listed vacancy<select class="field mt-2" name="vacancy_id">
+                            <option value="">General application / not listed</option>
+                            @foreach ($vacancies as $vacancy)
+                                <option value="{{ $vacancy->id }}" @selected(old('vacancy_id', request('vacancy')) == $vacancy->id)>{{ $vacancy->title }}
+                                </option>
+                            @endforeach
+                        </select></label></div>
+                <label class="block text-sm font-semibold">Years of relevant experience<input class="field mt-2"
+                        type="number" min="0" max="60" name="experience_years"
+                        value="{{ old('experience_years') }}"></label>
+                <div class="rounded-xl border border-dashed border-slate-300 bg-slate-50 p-5"><label
+                        class="block text-sm font-semibold">CV / Resume (PDF, max 5 MB) *<input class="field mt-2"
+                            type="file" name="cv" accept="application/pdf,.pdf" required></label><label
+                        class="mt-5 block text-sm font-semibold">Supporting certificates (PDF/JPG/PNG, max 5 MB each; up to
+                        5 files)<input class="field mt-2" type="file" name="certificates[]" accept=".pdf,.jpg,.jpeg,.png"
+                            multiple></label>
+                    <p class="mut mt-3 text-xs">Uploaded files are stored on the local private disk, not exposed as public
+                        links.</p>
+                </div>
+                <label class="block text-sm font-semibold">Additional information
+                    <textarea class="field mt-2" name="message" rows="4" maxlength="3000">{{ old('message') }}</textarea>
+                </label>
+                <label class="flex items-start gap-3 text-sm leading-6"><input class="mt-1 h-4 w-4" type="checkbox"
+                        name="consent" value="1" required @checked(old('consent'))><span>I confirm that the
+                        information I provided is accurate and consent to its use for recruitment review. *</span></label>
+                <button class="btn btn-red" type="submit">Submit application →</button>
+            </form>
+        </div>
+    </section>
 @endsection

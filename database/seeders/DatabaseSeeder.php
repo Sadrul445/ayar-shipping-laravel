@@ -16,7 +16,8 @@ class DatabaseSeeder extends Seeder
                 'description' => 'Sample vacancy for demonstration. Confirm the real job details with Ayar Shipping Services before publishing.',
                 'requirements' => "Valid relevant Certificate of Competency\nCurrent medical certificate\nRelevant sea service and experience",
                 'is_active' => true,
-                'created_at' => now(), 'updated_at' => now(),
+                'created_at' => now(), 
+                'updated_at' => now(),
             ],
             [
                 'title' => 'Able Seafarer / AB',
@@ -26,7 +27,8 @@ class DatabaseSeeder extends Seeder
                 'description' => 'Sample vacancy for demonstration. Replace this with a verified opening before accepting applications.',
                 'requirements' => "Valid seafarer documents\nRelevant training certificates\nSea service record",
                 'is_active' => true,
-                'created_at' => now(), 'updated_at' => now(),
+                'created_at' => now(), 
+                'updated_at' => now(),
             ],
             [
                 'title' => 'Marine Engineer',
@@ -36,7 +38,8 @@ class DatabaseSeeder extends Seeder
                 'description' => 'Sample vacancy for demonstration. The role, salary and joining date need confirmation.',
                 'requirements' => "Relevant engineering certification\nValid medical certificate\nRelevant vessel experience",
                 'is_active' => true,
-                'created_at' => now(), 'updated_at' => now(),
+                'created_at' => now(), 
+                'updated_at' => now(),
             ],
         ]);
     }
